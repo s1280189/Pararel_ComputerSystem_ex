@@ -25,25 +25,6 @@ float rand_float()
 
 
 
-
-double mm_f(float a[n][n], float b[n][n], float c[n][n], int n){
-  int i,j,k;
-  double st,en;
-  st=e_time();
-  for(i=0;i<n;i++){
-    for(j=0;j<n;j++){
-      for(k=0;k<n;k++){
-	c[i][j]=c[i][j]+a[i][k]*b[k][j];
-      }
-    }
-  }
-  en=e_time();
-
-  return en-st;
-}//calculate mm(float) & elapsed time
-
-
-
 int main(){
 
   int n=8;
@@ -68,7 +49,7 @@ int main(){
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
       for(k=0;k<n;k++){
-	c[i][j]=c[i][j]+a[i][k]*b[k][j];
+	c_d[i][j]=c_d[i][j]+a_d[i][k]*b_d[k][j];
       }
     }
   }
@@ -79,16 +60,16 @@ int main(){
   //float-------------------------------
    for(i=0;i<n;i++){
     for(j=0;j<n;j++){
-      a[i][j]=rand_float();
-      b[i][j]=rand_float();
-      c[i][j]=0;
+      a_f[i][j]=rand_float();
+      b_f[i][j]=rand_float();
+      c_f[i][j]=0;
     }
   }//initialize float a[][],b[][],c[][]
   st=e_time();
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
       for(k=0;k<n;k++){
-	c[i][j]=c[i][j]+a[i][k]*b[k][j];
+	c_f[i][j]=c_f[i][j]+a_f[i][k]*b_f[k][j];
       }
     }
   }
