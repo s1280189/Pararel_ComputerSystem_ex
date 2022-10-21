@@ -3,6 +3,7 @@
 #include<time.h>
 #include<sys/time.h>
 #include<sys/resource.h>
+#include<math.h>
 
 double e_time(){
   static struct timeval now;
@@ -60,7 +61,8 @@ int main(){
   en=e_time();
   elapsedTime=en-st;
   printf("double N=8, elapsed time: %f\n",elapsedTime);
-  printf("-> %f MFLOPS\n", 2*(n*n*n)/(elapsedTime)/1.0e6);
+  elapsedTime=2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
+  printf("-> %f MFLOPS\n",elapsedTime);
   //float-------------------------------
   st=e_time();
   for(i=0;i<n;i++){
@@ -73,7 +75,8 @@ int main(){
   en=e_time();
   elapsedTime=en-st;
   printf("float N=8, elapsed time: %f\n", elapsedTime);
-  printf("-> %f MFLOPS\n", 2*(n*n*n)/(elapsedTime)/1.0e6);
+  elapsedTime =  2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
+  printf("-> %f MFLOPS\n", elapsedTime);
 
   return 0;
 }
