@@ -68,7 +68,7 @@ int main(){
   }
   en=e_time();
   elapsedTime=en-st;
-  printf("double N=8, elapsed time: %f\n",elapsedTime);
+  printf("double , elapsed time: %f\n",elapsedTime);
   elapsedTime=2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
   printf("-> %f MFLOPS\n",elapsedTime);
   //float-------------------------------
@@ -82,7 +82,7 @@ int main(){
   }
   en=e_time();
   elapsedTime=en-st;
-  printf("float N=8, elapsed time: %f\n", elapsedTime);
+  printf("float , elapsed time: %f\n", elapsedTime);
   elapsedTime =  2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
   printf("-> %f MFLOPS\n", elapsedTime);
 
