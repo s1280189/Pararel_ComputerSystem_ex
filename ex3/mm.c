@@ -28,25 +28,33 @@ float rand_float()
 
 int main(){
 
-  int n=8;
-  double a_d[n][n], b_d[n][n], c_d[n][n];
-  float a_f[n][n], b_f[n][n], c_f[n][n];
+  int n;
+  double *a_d, *b_d, *c_d;
+  float  *a_f, *b_f, *c_f;
   double elapsedTime;
   int i,j,k;
   double en,st;
   
   
-  printf("input N=id = (8, 16, 32, 64, 128, 256, 512, 1024, 2048)\n");
+  printf("input N=id = (8, 16, 32, 64, 128, 256, 512, 1024, 2048)\n->");
   scanf("%d", &n);
+
+  a_d=(double *)malloc(sizeof(double)* n*n);
+  b_d=(double *)malloc(sizeof(double)* n*n);
+  c_d=(double *)malloc(sizeof(double)*n*n);
+  a_f=(float *)malloc(sizeof(float)* n*n);
+  b_f=(float *)malloc(sizeof(float)* n*n);
+  c_f=(float *)malloc(sizeof(float)* n*n);
+  
   
    for(i=0;i<n;i++){
     for(j=0;j<n;j++){
-      a_d[i][j]=rand_double();
-      b_d[i][j]=rand_double();
-      c_d[i][j]=0;
-      a_f[i][j]=rand_float();
-      b_f[i][j]=rand_float();
-      c_f[i][j]=0;
+      a_d[i*n+j]=rand_double();
+      b_d[i*n+j]=rand_double();
+      c_d[i*n+j]=0;
+      a_f[i*n+j]=rand_float();
+      b_f[i*n+j]=rand_float();
+      c_f[i*n+j]=0;
     }
   }//initialize
    //double---------------------------
@@ -54,7 +62,7 @@ int main(){
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
       for(k=0;k<n;k++){
-	c_d[i][j]=c_d[i][j]+a_d[i][k]*b_d[k][j];
+	c_d[i*n+j]=c_d[i*n+j]+a_d[i*n+k]*b_d[k*n+j];
       }
     }
   }
@@ -68,7 +76,7 @@ int main(){
   for(i=0;i<n;i++){
     for(j=0;j<n;j++){
       for(k=0;k<n;k++){
-	c_f[i][j]=c_f[i][j]+a_f[i][k]*b_f[k][j];
+	c_f[i*n+j]=c_f[i*n+j]+a_f[i*n+k]*b_f[k*n+j];
       }
     }
   }
@@ -77,6 +85,13 @@ int main(){
   printf("float N=8, elapsed time: %f\n", elapsedTime);
   elapsedTime =  2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
   printf("-> %f MFLOPS\n", elapsedTime);
+
+  free(a_d);
+  free(b_d);
+  free(c_d);
+  free(a_f);
+  free(b_f);
+  free(c_f);
 
   return 0;
 }
