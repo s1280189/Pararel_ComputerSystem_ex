@@ -113,7 +113,7 @@ int main(){
 
       	for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
-	    MC[i_d][j_d]=c_d[i_d*n+j_d];
+	    MC[i_d][j_d]=0;
 	  }
 	}
       
@@ -132,7 +132,6 @@ int main(){
 	MMA_d(MA, MB, MC, nb, nb);
       }
     }
-    c_d[
   }
   en=e_time();
   elapsedTime=en-st;
