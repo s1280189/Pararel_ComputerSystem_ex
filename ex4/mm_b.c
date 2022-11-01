@@ -104,13 +104,15 @@ int main(){
   }//initialize
 
    const int b=4;  //change 2, 4, 8, 16 or 32
-  double *MA, *MB, *MC;
-
-  MA=(double *)malloc(sizeof(double)* b*b);
-  MB=(double *)malloc(sizeof(double)* b*b);
-  MC=(double *)malloc(sizeof(double)* b*b);
+ 
   
    //double---------------------------
+
+  double *MAd, *MBd, *MCd;
+
+  MAd=(double *)malloc(sizeof(double)* b*b);
+  MBd=(double *)malloc(sizeof(double)* b*b);
+  MCd=(double *)malloc(sizeof(double)* b*b);
   st=e_time();
   for(i=0;i<n;i+=b){
     for(j=0;j<n;j+=b){
@@ -119,7 +121,7 @@ int main(){
 	  for(j_d=j; j_d<j+b; j_d++){
 	    for(mi=0;mi<b;mi++){
 	      for(mj=0;mj<b;mj++){
-		MC[mi*b+mj]=c_d[i_d*n+j_d];
+		MCd[mi*b+mj]=c_d[i_d*n+j_d];
 	      }
 	    }
 	  }
@@ -134,8 +136,8 @@ int main(){
 	      for(mi=0;mi<b;mi++){
 		for(mj=0;mj<b;mj++){
 		  for(mk=0;mk<b;mk++){
-		    MA[mi*b+mk]=a_d[i_d*n+k_d];
-		    MB[mk*b+mj]=b_d[k_d*n+j_d];
+		    MAd[mi*b+mk]=a_d[i_d*n+k_d];
+		    MBd[mk*b+mj]=b_d[k_d*n+j_d];
 		  }
 		}
 	      }
@@ -143,7 +145,7 @@ int main(){
 	  }
 	}
 
-	MMA_d(MA, MB, MC, b, b);
+	MMA_d(MAd, MBd, MCd, b, b);
       }
     }
 
@@ -151,7 +153,7 @@ int main(){
 	  for(j_d=j; j_d<j+b; j_d++){
 	    for(mi=0;mi<b;mi++){
 	      for(mj=0;mj<b;mj++){
-		c_d[i_d*n+j_d]=MC[mi*b+mj];
+		c_d[i_d*n+j_d]=MCd[mi*b+mj];
 	      }
 	    }
 	  }
@@ -165,6 +167,63 @@ int main(){
 
   
   //float-------------------------------
+   float *MAf, *MBf, *MCf;
+
+  MAf=(float *)malloc(sizeof(double)* b*b);
+  MBf=(float *)malloc(sizeof(double)* b*b);
+  MCf=(float *)malloc(sizeof(double)* b*b);
+  st=e_time();
+  for(i=0;i<n;i+=b){
+    for(j=0;j<n;j+=b){
+
+      	for(i_d=i; i_d<i+b; i_d++){
+	  for(j_d=j; j_d<j+b; j_d++){
+	    for(mi=0;mi<b;mi++){
+	      for(mj=0;mj<b;mj++){
+		MCf[mi*b+mj]=c_d[i_d*n+j_d];
+	      }
+	    }
+	  }
+	}
+      
+      
+      for(k=0;k<n;k+=b){
+	
+	for(i_d=i; i_d<i+b; i_d++){
+	  for(j_d=j; j_d<j+b; j_d++){
+	    for(k_d=k; k_d<k+b; k_d++){
+	      for(mi=0;mi<b;mi++){
+		for(mj=0;mj<b;mj++){
+		  for(mk=0;mk<b;mk++){
+		    MAf[mi*b+mk]=a_d[i_d*n+k_d];
+		    MBf[mk*b+mj]=b_d[k_d*n+j_d];
+		  }
+		}
+	      }
+	    }
+	  }
+	}
+
+	MMA_f(MAf, MBf, MCf, b, b);
+      }
+    }
+
+    for(i_d=i; i_d<i+b; i_d++){
+	  for(j_d=j; j_d<j+b; j_d++){
+	    for(mi=0;mi<b;mi++){
+	      for(mj=0;mj<b;mj++){
+		c_d[i_d*n+j_d]=MCf[mi*b+mj];
+	      }
+	    }
+	  }
+	}
+  }
+  en=e_time();
+  elapsedTime=en-st;
+  printf("double , elapsed time: %f\n",elapsedTime);
+  elapsedTime=2*pow((double)n, 3.0)/(elapsedTime)/1.0e6;
+  printf("-> %f MFLOPS\n",elapsedTime);
+  //------------------------------------------------------
 
   
   free(a_d);
@@ -173,9 +232,12 @@ int main(){
   free(a_f);
   free(b_f);
   free(c_f);
-  free(MA);
-  free(MB);
-  free(MC);
+  free(MAd);
+  free(MBd);
+  free(MCd);
+  free(MAf);
+  free(MBf);
+  free(MCf);
 
   return 0;
 }
