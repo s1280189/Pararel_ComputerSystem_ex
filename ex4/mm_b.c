@@ -103,7 +103,7 @@ int main(){
     }
   }//initialize
 
-  const int b=4;
+   const int b=4;  //change 2, 4, 8, 16 or 32
   double *MA, *MB, *MC;
 
   MA=(double *)malloc(sizeof(double)* b*b);
