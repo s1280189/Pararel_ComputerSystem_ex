@@ -128,36 +128,43 @@ int main(){
       
       
       for(k=0;k<n;k+=b){
-	
+	      mi=0;
+	      mj=0;
+	      mk=0;
 	for(i_d=i; i_d<i+b; i_d++){
-	  for(j_d=j; j_d<j+b; j_d++){
-	    for(k_d=k; k_d<k+b; k_d++){
-	      for(mi=0;mi<b;mi++){
-		for(mj=0;mj<b;mj++){
-		  for(mk=0;mk<b;mk++){
+	    for(k_d=k; k_d<k+b;k_d++){
 		    MAd[mi*b+mk]=a_d[i_d*n+k_d];
-		    MBd[mk*b+mj]=b_d[k_d*n+j_d];
-		  }
-		}
-	      }
+		    mk++;
 	    }
-	  }
+		mk=0;
+		mi++;
 	}
-
+	      mk=0;
+	      
+	 for(j_d=j; j_d<j+b; j_d++){
+	    for(k_d=k; k_d<k+b;k_d++){
+		 MBd[mk*b+mj]=b_d[k_d*n+j_d];
+		    mk++;
+	    }
+		mk=0;
+		mj++;
+	}
+	      
 	MMA_d(MAd, MBd, MCd, b, b);
       }
     }
+  }
+  
 
     for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
-	    for(mi=0;mi<b;mi++){
-	      for(mj=0;mj<b;mj++){
 		c_d[i_d*n+j_d]=MCd[mi*b+mj];
-	      }
-	    }
+		  mj++;
 	  }
-	}
-  }
+	    mi++;
+	    mj=0;
+    }
+  
   en=e_time();
   elapsedTime=en-st;
   printf("double , elapsed time: %f\n",elapsedTime);
@@ -189,36 +196,43 @@ int main(){
       
       
       for(k=0;k<n;k+=b){
+	      mi=0;
+	      mj=0;
+	      mk=0;
 	
 	for(i_d=i; i_d<i+b; i_d++){
-	  for(j_d=j; j_d<j+b; j_d++){
 	    for(k_d=k; k_d<k+b; k_d++){
-	      for(mi=0;mi<b;mi++){
-		for(mj=0;mj<b;mj++){
-		  for(mk=0;mk<b;mk++){
 		    MAf[mi*b+mk]=a_d[i_d*n+k_d];
-		    MBf[mk*b+mj]=b_d[k_d*n+j_d];
-		  }
-		}
-	      }
+		    mk++;
 	    }
-	  }
+		mk=0;
+		mi++;
 	}
+	      mk=0;
+	for(j_d=i; j_d<j+b; j_d++){
+	    for(k_d=k; k_d<k+b; k_d++){
+		   MBf[mk*b+mj]=b_d[k_d*n+j_d];
+		    mk++;
+	    }
+		mj++;
+		mk=0;
+	}
+	      
 
 	MMA_f(MAf, MBf, MCf, b, b);
       }
     }
+  }
 
     for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
-	    for(mi=0;mi<b;mi++){
-	      for(mj=0;mj<b;mj++){
 		c_d[i_d*n+j_d]=MCf[mi*b+mj];
-	      }
-	    }
+		  mj++;
 	  }
-	}
-  }
+	    mj=0;
+	    mi++;
+    }
+	  
   en=e_time();
   elapsedTime=en-st;
   printf("double , elapsed time: %f\n",elapsedTime);
