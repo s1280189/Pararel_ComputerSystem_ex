@@ -77,7 +77,7 @@ int main(){
   int i,j,k;
   double en,st;
   int i_d, j_d, k_d;
-  int mi,mj,mk;
+  int mi=0,mj=0,mk=0;
 
   
   
@@ -119,12 +119,10 @@ int main(){
 
       	for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
-	    for(mi=0;mi<b;mi++){
-	      for(mj=0;mj<b;mj++){
 		MCd[mi*b+mj]=c_d[i_d*n+j_d];
-	      }
-	    }
+		  mj++;
 	  }
+		mi++;
 	}
       
       
@@ -169,6 +167,9 @@ int main(){
   //float-------------------------------
    float *MAf, *MBf, *MCf;
 
+	mi=0;
+	mj=0;
+	mk=0;
   MAf=(float *)malloc(sizeof(double)* b*b);
   MBf=(float *)malloc(sizeof(double)* b*b);
   MCf=(float *)malloc(sizeof(double)* b*b);
@@ -178,12 +179,10 @@ int main(){
 
       	for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
-	    for(mi=0;mi<b;mi++){
-	      for(mj=0;mj<b;mj++){
 		MCf[mi*b+mj]=c_d[i_d*n+j_d];
-	      }
-	    }
+		  mj++;
 	  }
+		mi++;
 	}
       
       
