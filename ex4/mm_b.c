@@ -122,6 +122,7 @@ int main(){
 		MCd[mi*b+mj]=c_d[i_d*n+j_d];
 		  mj++;
 	  }
+		mj=0;
 		mi++;
 	}
       
@@ -182,6 +183,7 @@ int main(){
 		MCf[mi*b+mj]=c_d[i_d*n+j_d];
 		  mj++;
 	  }
+		mj=0;
 		mi++;
 	}
       
