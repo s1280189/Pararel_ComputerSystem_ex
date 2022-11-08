@@ -1,0 +1,26 @@
+input N=id = (32, 64, 128, 256, 512, 1024)
+->1024
+double , elapsed time: 4.235205
+-> 507.055399 MFLOPS
+double , elapsed time: 10.412720
+-> 206.236570 MFLOPS
+double free or corruption (out)
+Aborted (core dumped)
+std3dc21:Ex4 s1280189[59]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->1024
+double , elapsed time: 4.200885
+-> 511.197907 MFLOPS
+double , elapsed time: 10.175923
+-> 211.035758 MFLOPS
+double free or corruption (out)
+Aborted (core dumped)
+std3dc21:Ex4 s1280189[59]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->1024
+double , elapsed time: 4.140119
+-> 518.700938 MFLOPS
+double , elapsed time: 10.232574
+-> 209.867395 MFLOPS
+double free or corruption (out)
+Aborted (core dumped)
