@@ -1,0 +1,24 @@
+std3dc21:Ex4 s1280189[59]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->512
+double , elapsed time: 0.498382
+-> 538.613768 MFLOPS
+double , elapsed time: 0.875597
+-> 306.574207 MFLOPS
+Segmentation fault (core dumped)
+std3dc21:Ex4 s1280189[59]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->512
+double , elapsed time: 0.492039
+-> 545.557313 MFLOPS
+double , elapsed time: 0.859933
+-> 312.158520 MFLOPS
+Segmentation fault (core dumped)
+std3dc21:Ex4 s1280189[59]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->512
+double , elapsed time: 0.503441
+-> 533.201571 MFLOPS
+double , elapsed time: 0.882974
+-> 304.012897 MFLOPS
+Segmentation fault (core dumped)
