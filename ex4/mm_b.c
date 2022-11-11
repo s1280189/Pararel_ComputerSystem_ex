@@ -103,7 +103,7 @@ int main(){
     }
   }//initialize
 
-   const int b=4;  //change 2, 4, 8, 16 or 32
+   const int b=32;  //change 2, 4, 8, 16 or 32
  
   
    //double---------------------------
@@ -116,8 +116,7 @@ int main(){
   st=e_time();
   for(i=0;i<n;i+=b){
     for(j=0;j<n;j+=b){
-
-      	for(i_d=i; i_d<i+b; i_d++){
+      for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
 		MCd[mi*b+mj]=c_d[i_d*n+j_d];
 		  mj++;
@@ -126,8 +125,7 @@ int main(){
 		mi++;
 	}
       
-      
-      for(k=0;k<n;k+=b){
+     for(k=0;k<n;k+=b){
 	      mi=0;
 	      mj=0;
 	      mk=0;
@@ -152,19 +150,17 @@ int main(){
 	      
 	MMA_d(MAd, MBd, MCd, b, b);
       }
-    }
-  }
-  
 
-    for(i_d=i; i_d<i+b; i_d++){
+     for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
 		c_d[i_d*n+j_d]=MCd[mi*b+mj];
 		  mj++;
 	  }
 	    mi++;
 	    mj=0;
+     }
     }
-  
+  }
   en=e_time();
   elapsedTime=en-st;
   printf("double , elapsed time: %f\n",elapsedTime);
@@ -174,18 +170,18 @@ int main(){
   
   //float-------------------------------
    float *MAf, *MBf, *MCf;
+   mi=0;
+   mj=0;
+   mk=0;
 
-	mi=0;
-	mj=0;
-	mk=0;
-  MAf=(float *)malloc(sizeof(double)* b*b);
-  MBf=(float *)malloc(sizeof(double)* b*b);
-  MCf=(float *)malloc(sizeof(double)* b*b);
+  MAf=(float *)malloc(sizeof(float)* b*b);
+  MBf=(float *)malloc(sizeof(float)* b*b);
+  MCf=(float *)malloc(sizeof(float)* b*b);
   st=e_time();
   for(i=0;i<n;i+=b){
     for(j=0;j<n;j+=b){
 
-      	for(i_d=i; i_d<i+b; i_d++){
+      for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
 		MCf[mi*b+mj]=c_d[i_d*n+j_d];
 		  mj++;
@@ -195,7 +191,7 @@ int main(){
 	}
       
       
-      for(k=0;k<n;k+=b){
+    for(k=0;k<n;k+=b){
 	      mi=0;
 	      mj=0;
 	      mk=0;
@@ -220,19 +216,18 @@ int main(){
 	      
 
 	MMA_f(MAf, MBf, MCf, b, b);
-      }
     }
-  }
 
     for(i_d=i; i_d<i+b; i_d++){
 	  for(j_d=j; j_d<j+b; j_d++){
 		c_d[i_d*n+j_d]=MCf[mi*b+mj];
-		  mj++;
+		mj++;
 	  }
 	    mj=0;
 	    mi++;
     }
-	  
+    }
+  }
   en=e_time();
   elapsedTime=en-st;
   printf("double , elapsed time: %f\n",elapsedTime);
