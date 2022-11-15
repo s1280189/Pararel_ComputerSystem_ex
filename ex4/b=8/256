@@ -1,0 +1,27 @@
+std3dc21:Ex4 s1280189[65]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->256
+double , elapsed time: 0.064901
+-> 517.010471 MFLOPS
+double , elapsed time: 0.087150
+-> 385.018872 MFLOPS
+munmap_chunk(): invalid pointer
+Aborted (core dumped)
+std3dc21:Ex4 s1280189[65]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->256
+double , elapsed time: 0.064356
+-> 521.387062 MFLOPS
+double , elapsed time: 0.084342
+-> 397.837742 MFLOPS
+munmap_chunk(): invalid pointer
+Aborted (core dumped)
+std3dc21:Ex4 s1280189[65]$ ./a.out
+input N=id = (32, 64, 128, 256, 512, 1024)
+->256
+double , elapsed time: 0.063638
+-> 527.270606 MFLOPS
+double , elapsed time: 0.088031
+-> 381.165857 MFLOPS
+munmap_chunk(): invalid pointer
+Aborted (core dumped)
