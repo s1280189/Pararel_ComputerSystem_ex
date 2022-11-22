@@ -1,0 +1,29 @@
+THREADS 1
+Aprroximate PI is 3.141592653589971e+00
+Elapased time 5.451278e+00 sec
+
+
+THREADS 2
+Aprroximate PI is 3.141592653590007e+00
+Elapased time 1.013598e+01 sec
+
+
+
+THREADS 3
+Aprroximate PI is 3.141592653589915e+00
+Elapased time 1.111308e+01 sec
+
+
+THREADS 4
+Aprroximate PI is 3.141592653589768e+00
+Elapased time 6.352870e+00 sec
+
+
+THREADS 5
+Aprroximate PI is 3.141592653589692e+00
+Elapased time 7.047748e+00 sec
+
+
+THREADS 6
+Aprroximate PI is 3.141592653589705e+00
+Elapased time 1.131018e+01 sec
