@@ -1,9 +1,9 @@
 #include<omp.h>
 #include<stdio.h>
 
-static long num_steps=100000;
+static long num_steps=10000000000;
 double step;
-#define N 2 //1~8,THREADS
+#define N 8 //1~8,THREADS
 
 void main()
 {
@@ -29,15 +29,14 @@ void main()
     sum[id]=0.0;
     #pragma omp parallel for
     for(i=id; i<num_steps; i=i+nthrds){
-      x0=i*i;
-      x1=(i+nthrds)*(i+nthrds);
-      sum[id] += ((id+nthrds)-id)/6 * (x0 + 4*( ((x0+x1)/2) * ((x0+x1)/2) ) + x1);
+      x0=4/(1+ i*i);
+      x1=4/(1+ (i+nthrds)*(i+nthrds));
+      sum[id] += ((id+nthrds)-id)/6 * (x0 + 4*(4/(1+ ((x0+x1)/2) * ((x0+x1)/2))) + x1);
     }
 
     for(i=0, integral=0.0;i<nthreads;i++) integral += sum[i]*step;
 
     en=omp_get_wtime();
 
-    printf("Simpson's integral is %20.15e\n", integral);
     printf("Elapsed time %e sec\n", en-st);
 }
